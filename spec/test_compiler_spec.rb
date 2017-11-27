@@ -1,6 +1,6 @@
-require_relative '../lib/test_compiler'
+require_relative './spec_helper'
 
-describe TestCompiler do
+describe 'compilation' do
   true_test = <<EOT
 it ("is true") {
   should_bool(_true) be truthy;
@@ -13,6 +13,10 @@ EOT
 
   compiled_test_submission = <<EOT
 #include <cspecs/cspec.h>
+
+int main(void) {
+  return report(JSON);
+}
 
 context (mumuki_test) {
 
@@ -34,10 +38,9 @@ context (mumuki_test) {
 EOT
 
   describe '#compile' do
-    let(:compiler) { TestCompiler.new(nil) }
-    it {
-      expect(compiler.compile(true_test, 'char _true = 0;', true_submission)).to eq(compiled_test_submission)
-    }
+    let(:compiler) { CTestHook.new(nil) }
+    let(:request) { OpenStruct.new(test: true_test, extra: 'char _true = 0;', content: true_submission) }
+    it { expect(compiler.compile_file_content(request)).to eq(compiled_test_submission) }
   end
 
 end

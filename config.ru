@@ -1,6 +1,4 @@
-require 'mumukit'
+require_relative 'lib/c_runner'
+require 'mumukit/server/app'
 
-require_relative 'lib/test_compiler'
-require_relative 'lib/test_runner'
-
-run Mumukit::TestServerApp
+run Mumukit::Server::App

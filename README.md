@@ -1,7 +1,3 @@
-[![Build Status](https://travis-ci.org/mgarciaisaia/mumuki-cspec-server.svg)](https://travis-ci.org/mgarciaisaia/mumuki-cspec-server)
+# Mumuki CSpec Server
 
-# Run the server
-
-```
-RACK_ENV=development bundle exec rackup -p 4567
-```
+> ⚠️⚠️⚠️ **This spike repo is archived. Further development has continued [in the Mumuki org](https://github.com/mumuki/mumuki-c-runner).**
